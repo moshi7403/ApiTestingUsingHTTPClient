@@ -2,7 +2,7 @@ package com.qa.tests;
 
 import com.qa.base.TestBase;
 import com.qa.client.RestClient;
-//import com.qa.util.TestUtil;
+import com.qa.util.TestUtil;
 import org.apache.http.Header;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -49,7 +49,6 @@ public class GetAPITest extends TestBase{
 
         Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
-/*
         //b. Json String:
         String responseString = EntityUtils.toString(closebaleHttpResponse.getEntity(), "UTF-8");
 
@@ -60,7 +59,7 @@ public class GetAPITest extends TestBase{
         //per_page:
         String perPageValue = TestUtil.getValueByJPath(responseJson, "/per_page");
         System.out.println("value of per page is-->"+ perPageValue);
-        Assert.assertEquals(Integer.parseInt(perPageValue), 3);
+        Assert.assertEquals(Integer.parseInt(perPageValue), 6);
 
         //total:
         String totalValue = TestUtil.getValueByJPath(responseJson, "/total");
@@ -88,7 +87,6 @@ public class GetAPITest extends TestBase{
         System.out.println("Headers Array-->"+allHeaders);
 
 
-*/
 
     }
 
@@ -99,7 +97,9 @@ public class GetAPITest extends TestBase{
         restClient = new RestClient();
 
         HashMap<String, String> headerMap = new HashMap<String, String>();
-        headerMap.put("Content-Type", "application/json");
+        headerMap.put("Content-Type", "application/json"); //This is default header
+
+//      Following key and values are for references:
 //		headerMap.put("username", "test@amazon.com");
 //		headerMap.put("password", "test213");
 //		headerMap.put("Auth Token", "12345");
@@ -113,7 +113,7 @@ public class GetAPITest extends TestBase{
 
         Assert.assertEquals(statusCode, RESPONSE_STATUS_CODE_200, "Status code is not 200");
 
-/*        //b. Json String:
+        //b. Json String:
         String responseString = EntityUtils.toString(closebaleHttpResponse.getEntity(), "UTF-8");
 
         JSONObject responseJson = new JSONObject(responseString);
@@ -123,7 +123,7 @@ public class GetAPITest extends TestBase{
         //per_page:
         String perPageValue = TestUtil.getValueByJPath(responseJson, "/per_page");
         System.out.println("value of per page is-->"+ perPageValue);
-        Assert.assertEquals(Integer.parseInt(perPageValue), 3);
+        Assert.assertEquals(Integer.parseInt(perPageValue), 6);
 
         //total:
         String totalValue = TestUtil.getValueByJPath(responseJson, "/total");
@@ -148,7 +148,7 @@ public class GetAPITest extends TestBase{
         for(Header header : headersArray){
             allHeaders.put(header.getName(), header.getValue());
         }
-        System.out.println("Headers Array-->"+allHeaders);*/
+        System.out.println("Headers Array-->"+allHeaders);
 
 
 
